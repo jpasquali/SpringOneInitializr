@@ -2,15 +2,18 @@ package com.springone.initializr.springoneinitializr.controller;
 
 import io.spring.initializr.web.project.WebProjectRequest;
 
+/**
+ * @author Joachim Pasquali
+ */
 public class SpringOneWebProjectRequest extends WebProjectRequest {
 
-	private String cloudfoundryOrg;
+	private String cloudFoundryOrg;
 
-	public String getCloudfoundryOrg() {
-		return this.cloudfoundryOrg;
+	public String getCloudFoundryOrg() {
+		return this.cloudFoundryOrg;
 	}
 
-	public void setCloudfoundryOrg(final String pCloundFoundryOrg) {
-		this.cloudfoundryOrg = pCloundFoundryOrg;
+	public void setCloudFoundryOrg(final String pCloudFoundryOrg) {
+		this.cloudFoundryOrg = pCloudFoundryOrg;
 	}
 }

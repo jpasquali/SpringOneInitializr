@@ -5,18 +5,17 @@ import io.spring.initializr.generator.project.MutableProjectDescription;
 /**
  * @author Stephane Nicoll
  */
-public class MutableSpringOneProjectDescription extends MutableProjectDescription
-		implements SpringOneProjectDescription {
+public class MutableSpringOneProjectDescription extends MutableProjectDescription implements SpringOneProjectDescription {
 
-	private String cloudfoundryOrg;
+	private String cloudFoundryOrg;
 
 	@Override
-	public String getCloudfoundryOrg() {
-		return this.cloudfoundryOrg;
+	public String getCloudFoundryOrg() {
+		return this.cloudFoundryOrg;
 	}
 
-	public void setCloudfoundryOrg(String cloudfoundryOrg) {
-		this.cloudfoundryOrg = cloudfoundryOrg;
+	public void setCloudFoundryOrg(final String cloudFoundryOrg) {
+		this.cloudFoundryOrg = cloudFoundryOrg;
 	}
 
 }

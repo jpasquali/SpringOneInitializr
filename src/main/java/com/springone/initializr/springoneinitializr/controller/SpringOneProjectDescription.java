@@ -7,6 +7,6 @@ import io.spring.initializr.generator.project.ProjectDescription;
  */
 public interface SpringOneProjectDescription extends ProjectDescription {
 
-	String getCloudfoundryOrg();
+	String getCloudFoundryOrg();
 
 }

@@ -2,24 +2,26 @@ package com.springone.initializr.springoneinitializr.controller;
 
 import java.util.Map;
 
+import org.springframework.web.bind.annotation.RequestHeader;
+
 import io.spring.initializr.metadata.InitializrMetadataProvider;
 import io.spring.initializr.web.controller.ProjectGenerationController;
 import io.spring.initializr.web.project.ProjectGenerationInvoker;
 
-import org.springframework.web.bind.annotation.RequestHeader;
-
+/**
+ * @author Joachim Pasquali
+ */
 public class SpringOneProjectGenerationController extends ProjectGenerationController<SpringOneWebProjectRequest> {
 
-	public SpringOneProjectGenerationController(InitializrMetadataProvider metadataProvider,
-			ProjectGenerationInvoker projectGenerationInvoker) {
-		super(metadataProvider, projectGenerationInvoker);
+	public SpringOneProjectGenerationController(final InitializrMetadataProvider pMetadataProvider, final ProjectGenerationInvoker pProjectGenerationInvoker) {
+		super(pMetadataProvider, pProjectGenerationInvoker);
 	}
 
 	@Override
-	public SpringOneWebProjectRequest projectRequest(@RequestHeader Map<String, String> headers) {
-		SpringOneWebProjectRequest request = new SpringOneWebProjectRequest();
-		request.getParameters().putAll(headers);
-		request.initialize(getMetadata());
+	public SpringOneWebProjectRequest projectRequest(@RequestHeader final Map<String, String> pHeaders) {
+		final SpringOneWebProjectRequest request = new SpringOneWebProjectRequest();
+		request.getParameters().putAll(pHeaders);
+		request.initialize(this.getMetadata());
 		return request;
 	}
 }

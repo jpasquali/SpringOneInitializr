@@ -5,8 +5,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import com.springone.initializr.springoneinitializr.controller.SpringOneProjectGenerationController;
-
 import com.springone.initializr.springoneinitializr.controller.SpringOneProjectRequestToDescriptionConverter;
+
 import io.spring.initializr.metadata.InitializrMetadata;
 import io.spring.initializr.metadata.InitializrMetadataBuilder;
 import io.spring.initializr.metadata.InitializrMetadataProvider;
@@ -16,24 +16,23 @@ import io.spring.initializr.web.project.ProjectRequestToDescriptionConverter;
 import io.spring.initializr.web.support.DefaultInitializrMetadataProvider;
 import io.spring.initializr.web.support.InitializrMetadataUpdateStrategy;
 
+/**
+ * @author Joachim Pasquali
+ */
 @Configuration
 @EnableConfigurationProperties(SpringOneInitializrProperties.class)
 public class SpringOneInitializrAutoConfiguration {
 
 	@Bean
-	public InitializrMetadataProvider customInitializrMetadataProvider(InitializrProperties initializrProperties,
-			SpringOneInitializrProperties springOneInitializrProperties,
+	public InitializrMetadataProvider customInitializrMetadataProvider(final InitializrProperties initializrProperties, final SpringOneInitializrProperties springOneInitializrProperties,
 			final InitializrMetadataUpdateStrategy metadataUpdateStrategy) {
-		InitializrMetadata metaData = InitializrMetadataBuilder
-				.fromInitializrProperties(springOneInitializrProperties.getInitializr())
-				.withInitializrProperties(initializrProperties, true).build();
+		final InitializrMetadata metaData = InitializrMetadataBuilder.fromInitializrProperties(springOneInitializrProperties.getInitializr()).withInitializrProperties(initializrProperties, true)
+				.build();
 		return new DefaultInitializrMetadataProvider(metaData, metadataUpdateStrategy);
 	}
 
 	@Bean
-	public SpringOneProjectGenerationController projectGenerationController(
-			InitializrMetadataProvider metadataProvider,
-			ProjectGenerationInvoker projectGenerationInvoker) {
+	public SpringOneProjectGenerationController projectGenerationController(final InitializrMetadataProvider metadataProvider, final ProjectGenerationInvoker projectGenerationInvoker) {
 		return new SpringOneProjectGenerationController(metadataProvider, projectGenerationInvoker);
 	}
 

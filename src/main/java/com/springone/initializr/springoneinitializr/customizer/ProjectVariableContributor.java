@@ -14,6 +14,9 @@ import com.springone.initializr.springoneinitializr.controller.SpringOneProjectD
 import io.spring.initializr.generator.io.template.MustacheTemplateRenderer;
 import io.spring.initializr.generator.project.contributor.ProjectContributor;
 
+/**
+ * @author Joachim Pasquali
+ */
 public class ProjectVariableContributor implements ProjectContributor {
 
 	private static final String TEMPLATE_NAME = "project-vars";
@@ -36,7 +39,7 @@ public class ProjectVariableContributor implements ProjectContributor {
 
 		final Map<String, String> projectVarMap = new HashMap<>();
 		projectVarMap.put(CF_ROUTE_PREFIX, cfRoutePrefix);
-		projectVarMap.put(CF_ORG, this.description.getCloudfoundryOrg());
+		projectVarMap.put(CF_ORG, this.description.getCloudFoundryOrg());
 
 		Files.write(file, this.renderer.render(TEMPLATE_NAME, projectVarMap).getBytes());
 	}

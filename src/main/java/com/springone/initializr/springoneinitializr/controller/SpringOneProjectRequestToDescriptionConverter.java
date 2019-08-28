@@ -12,11 +12,11 @@ import io.spring.initializr.web.project.ProjectRequestToDescriptionConverter;
 public class SpringOneProjectRequestToDescriptionConverter implements ProjectRequestToDescriptionConverter {
 
 	@Override
-	public ProjectDescription convert(ProjectRequest request, InitializrMetadata metadata) {
-		MutableSpringOneProjectDescription description = new MutableSpringOneProjectDescription();
+	public ProjectDescription convert(final ProjectRequest request, final InitializrMetadata metadata) {
+		final MutableSpringOneProjectDescription description = new MutableSpringOneProjectDescription();
 		new DefaultProjectRequestToDescriptionConverter().convert(request, description, metadata);
-		SpringOneWebProjectRequest springOneRequest = (SpringOneWebProjectRequest) request;
-		description.setCloudfoundryOrg(springOneRequest.getCloudfoundryOrg());
+		final SpringOneWebProjectRequest springOneRequest = (SpringOneWebProjectRequest) request;
+		description.setCloudFoundryOrg(springOneRequest.getCloudFoundryOrg());
 		return description;
 	}
 

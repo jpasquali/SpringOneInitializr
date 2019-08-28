@@ -1,2 +1,2 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=com.springone.initializr.springoneinitializr.config.SpringOneConfig
-io.spring.initializr.generator.project.ProjectGenerationConfiguration=com.springone.initializr.springoneinitializr.customizer.SpringOneCustomizer
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=com.springone.initializr.springoneinitializr.config.SpringOneInitializrAutoConfiguration
+io.spring.initializr.generator.project.ProjectGenerationConfiguration=com.springone.initializr.springoneinitializr.customizer.SpringOneProjectGenerationConfiguration

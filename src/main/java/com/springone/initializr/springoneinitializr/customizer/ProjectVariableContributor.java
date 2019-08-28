@@ -9,10 +9,9 @@ import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.springone.initializr.springoneinitializr.config.SpringOneWebProjectRequest;
+import com.springone.initializr.springoneinitializr.controller.SpringOneProjectDescription;
 
 import io.spring.initializr.generator.io.template.MustacheTemplateRenderer;
-import io.spring.initializr.generator.project.ResolvedProjectDescription;
 import io.spring.initializr.generator.project.contributor.ProjectContributor;
 
 public class ProjectVariableContributor implements ProjectContributor {
@@ -23,13 +22,11 @@ public class ProjectVariableContributor implements ProjectContributor {
 	private static final String CF_ROUTE_PREFIX = "cfRoutePrefix";
 
 	private final MustacheTemplateRenderer renderer;
-	private final ResolvedProjectDescription description;
-	private final SpringOneWebProjectRequest springOneWebProjectRequest;
+	private final SpringOneProjectDescription description;
 
-	public ProjectVariableContributor(final ResolvedProjectDescription pDescription, final MustacheTemplateRenderer pTemplateRenderer, final SpringOneWebProjectRequest pSpringOneWebProjectRequest) {
+	public ProjectVariableContributor(final SpringOneProjectDescription pDescription, final MustacheTemplateRenderer pTemplateRenderer) {
 		this.description = pDescription;
 		this.renderer = pTemplateRenderer;
-		this.springOneWebProjectRequest = pSpringOneWebProjectRequest;
 	}
 
 	@Override
@@ -39,7 +36,7 @@ public class ProjectVariableContributor implements ProjectContributor {
 
 		final Map<String, String> projectVarMap = new HashMap<>();
 		projectVarMap.put(CF_ROUTE_PREFIX, cfRoutePrefix);
-		projectVarMap.put(CF_ORG, this.springOneWebProjectRequest.getCloundFoundryOrg());
+		projectVarMap.put(CF_ORG, this.description.getCloudfoundryOrg());
 
 		Files.write(file, this.renderer.render(TEMPLATE_NAME, projectVarMap).getBytes());
 	}

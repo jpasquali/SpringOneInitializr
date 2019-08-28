@@ -7,14 +7,10 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @ConfigurationProperties("springone")
 public class SpringOneInitializrProperties {
 
-	private InitializrProperties initializr = new InitializrProperties();
+	private final InitializrProperties initializr = new InitializrProperties();
 
 	public InitializrProperties getInitializr() {
 		return initializr;
-	}
-
-	public void setInitializr(InitializrProperties initializr) {
-		this.initializr = initializr;
 	}
 
 }

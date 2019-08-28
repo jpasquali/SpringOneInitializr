@@ -7,13 +7,13 @@ import io.spring.initializr.web.project.WebProjectRequest;
  */
 public class SpringOneWebProjectRequest extends WebProjectRequest {
 
-	private String cloudFoundryOrg;
+	private String applicationId;
 
-	public String getCloudFoundryOrg() {
-		return this.cloudFoundryOrg;
+	public String getApplicationId() {
+		return this.applicationId;
 	}
 
-	public void setCloudFoundryOrg(final String pCloudFoundryOrg) {
-		this.cloudFoundryOrg = pCloudFoundryOrg;
+	public void setApplicationId(final String pApplicationId) {
+		this.applicationId = pApplicationId;
 	}
 }

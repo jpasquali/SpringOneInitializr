@@ -16,7 +16,7 @@ public class SpringOneProjectRequestToDescriptionConverter implements ProjectReq
 		final MutableSpringOneProjectDescription description = new MutableSpringOneProjectDescription();
 		new DefaultProjectRequestToDescriptionConverter().convert(request, description, metadata);
 		final SpringOneWebProjectRequest springOneRequest = (SpringOneWebProjectRequest) request;
-		description.setCloudFoundryOrg(springOneRequest.getCloudFoundryOrg());
+		description.setApplicationId(springOneRequest.getApplicationId());
 		return description;
 	}
 

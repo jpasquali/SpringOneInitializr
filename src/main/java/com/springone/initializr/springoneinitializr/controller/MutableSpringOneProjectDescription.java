@@ -7,15 +7,14 @@ import io.spring.initializr.generator.project.MutableProjectDescription;
  */
 public class MutableSpringOneProjectDescription extends MutableProjectDescription implements SpringOneProjectDescription {
 
-	private String cloudFoundryOrg;
+	private String applicationId;
 
 	@Override
-	public String getCloudFoundryOrg() {
-		return this.cloudFoundryOrg;
+	public String getApplicationId() {
+		return this.applicationId;
 	}
 
-	public void setCloudFoundryOrg(final String cloudFoundryOrg) {
-		this.cloudFoundryOrg = cloudFoundryOrg;
+	public void setApplicationId(final String pApplicationId) {
+		this.applicationId = pApplicationId;
 	}
-
 }

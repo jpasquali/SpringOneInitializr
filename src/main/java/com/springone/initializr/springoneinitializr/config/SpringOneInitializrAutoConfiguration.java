@@ -1,18 +1,19 @@
 package com.springone.initializr.springoneinitializr.config;
 
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import com.springone.initializr.springoneinitializr.controller.SpringOneProjectGenerationController;
 import com.springone.initializr.springoneinitializr.controller.SpringOneProjectRequestToDescriptionConverter;
 
+import com.springone.initializr.springoneinitializr.controller.SpringOneWebProjectRequest;
 import io.spring.initializr.metadata.InitializrMetadata;
 import io.spring.initializr.metadata.InitializrMetadataBuilder;
 import io.spring.initializr.metadata.InitializrMetadataProvider;
 import io.spring.initializr.metadata.InitializrProperties;
 import io.spring.initializr.web.project.ProjectGenerationInvoker;
-import io.spring.initializr.web.project.ProjectRequestToDescriptionConverter;
 import io.spring.initializr.web.support.DefaultInitializrMetadataProvider;
 import io.spring.initializr.web.support.InitializrMetadataUpdateStrategy;
 
@@ -32,13 +33,11 @@ public class SpringOneInitializrAutoConfiguration {
 	}
 
 	@Bean
-	public SpringOneProjectGenerationController projectGenerationController(final InitializrMetadataProvider metadataProvider, final ProjectGenerationInvoker projectGenerationInvoker) {
+	public SpringOneProjectGenerationController projectGenerationController(InitializrMetadataProvider metadataProvider,
+			ApplicationContext applicationContext) {
+		ProjectGenerationInvoker<SpringOneWebProjectRequest> projectGenerationInvoker = new ProjectGenerationInvoker<>(
+				applicationContext, new SpringOneProjectRequestToDescriptionConverter());
 		return new SpringOneProjectGenerationController(metadataProvider, projectGenerationInvoker);
-	}
-
-	@Bean
-	public ProjectRequestToDescriptionConverter projectRequestToDescriptionConverter() {
-		return new SpringOneProjectRequestToDescriptionConverter();
 	}
 
 }

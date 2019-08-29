@@ -9,14 +9,13 @@ import io.spring.initializr.web.project.ProjectRequestToDescriptionConverter;
 /**
  * @author Stephane Nicoll
  */
-public class SpringOneProjectRequestToDescriptionConverter implements ProjectRequestToDescriptionConverter {
+public class SpringOneProjectRequestToDescriptionConverter implements ProjectRequestToDescriptionConverter<SpringOneWebProjectRequest> {
 
 	@Override
-	public ProjectDescription convert(final ProjectRequest request, final InitializrMetadata metadata) {
-		final MutableSpringOneProjectDescription description = new MutableSpringOneProjectDescription();
+	public ProjectDescription convert(SpringOneWebProjectRequest request, InitializrMetadata metadata) {
+		MutableSpringOneProjectDescription description = new MutableSpringOneProjectDescription();
 		new DefaultProjectRequestToDescriptionConverter().convert(request, description, metadata);
-		final SpringOneWebProjectRequest springOneRequest = (SpringOneWebProjectRequest) request;
-		description.setApplicationId(springOneRequest.getApplicationId());
+		description.setApplicationId(request.getApplicationId());
 		return description;
 	}
 

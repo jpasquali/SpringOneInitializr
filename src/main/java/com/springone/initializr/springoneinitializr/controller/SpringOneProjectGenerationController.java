@@ -13,7 +13,8 @@ import io.spring.initializr.web.project.ProjectGenerationInvoker;
  */
 public class SpringOneProjectGenerationController extends ProjectGenerationController<SpringOneWebProjectRequest> {
 
-	public SpringOneProjectGenerationController(final InitializrMetadataProvider pMetadataProvider, final ProjectGenerationInvoker pProjectGenerationInvoker) {
+	public SpringOneProjectGenerationController(final InitializrMetadataProvider pMetadataProvider,
+			final ProjectGenerationInvoker<SpringOneWebProjectRequest> pProjectGenerationInvoker) {
 		super(pMetadataProvider, pProjectGenerationInvoker);
 	}
 
